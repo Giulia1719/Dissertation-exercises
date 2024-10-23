@@ -21,8 +21,8 @@ Open a new Python document, and write the following code:
 
 Open and access the FITS file downloaded previously, you can do this as follows:
 
-    fits_file_path = "[insert the file directory here, plus a filename here]"
-    #fits_file_path = "/Users/akr23/newfile.fits" #if you don't know how to find the directory path, ask for help
+    fits_file_path = "insert the file directory here, plus a filename here"      
+    #skip this step if you have the file in the same directory as the Jupiter Notebook
     
     initial_data = fits.open(fits_file_path)
     data = initial_data[1].data
@@ -33,6 +33,11 @@ This step is taken due to the fact that only 'soft' x-ray emitters are wanted si
 
     column1 = 'HARDNESS_RATIO_1'
     column2 = 'HARDNESS_RATIO_1_ERROR'
+    max_value = 0
+    filtered_data = data[(data[column1] - data[column2]) <= max_value]
+
+    column1 = 'HARDNESS_RATIO_2'
+    column2 = 'HARDNESS_RATIO_2_ERROR'
     max_value = 0
     filtered_data = data[(data[column1] - data[column2]) <= max_value]
 
@@ -67,7 +72,7 @@ This step is taken due to the fact that of the known XDINS (Magnificent 7), the 
 
 This filtered data set can now be exported for further analysis in TOPCAT. You can export it as a new FITS file as follows:
 
-    output_file = "[Insert new file directory here]"
+    output_file = "Insert new file directory here, including the file name"      #on Windows, use double slashes to avoid getting an error
     fits.writeto(output_file, np.asarray(filtered_data), overwrite=True)
 
 3) Applying filters in TOPCAT - removing known objects from other all-sky surveys.
@@ -135,25 +140,24 @@ Repeat 3.6), instead selecting Table 1 as the one generated in 3.8), using the R
 
 ![image](https://github.com/SaCu2001/ROSAT-data-filtering/assets/148392974/09e815fd-764f-4f88-9d77-4de0919c713d)
 
-Finally, check that the 3 known XDINS within the SDSS all-sky survey are remaining in the generated list of 56 objects by comparing their RA and DEC with that of the Magnificent 7 known XDINS:
+Finally, check that at least 3 of the Magnificent 7 known XDINS within the SDSS all-sky survey remain in the generated list of 56 objects by comparing their RA and DEC. This can be done manually downloading the file you obtained as a CSV file and opening it in Excel. You can find the RA and DEC of the Magnificent 7 online, but this paper is a good place to start: https://arxiv.org/pdf/2407.00275.
 
-![image](https://github.com/SaCu2001/ROSAT-data-filters/assets/148392974/54ed6570-0f38-4c99-bdb8-fe2ba7b589cf)
 
 4) Removing saturated images
 
-In this list of 56 objects there are several images which appear saturated on the SDSS image viewer. These objects need to be removed as they are not distinguishable from the object saturating them, and are thus not viable candidates.
+In this list of 56 objects, several images appear saturated on the SDSS image viewer. These objects need to be removed as they are not distinguishable from the object saturating them and are thus not viable candidates.
 
 4.1) Getting magnitude columns for each object
 
-Perform a crossmatch of the 56 candidate XDINS with TYCHO-2, setting a radius of 0.6 arcminutes with a 'Find Mode' of 'Each'. Select Go, and the objects in the list within 0.6 arcminutes of a TYCHO-2 source have the respective TYCHO-2 columns added on to them. In this new table, select the 'Display Column Metadata' symbol on the top display bar, and select only the coordinate and positional uncertainty data, the hardness ratios and x-ray to optical flux ratios (if added to the original data), as well as any and all magnitude columns contained within the data set. Finally save and export the new list as a .csv file.
+Perform a crossmatch of the 56 candidate XDINS with TYCHO-2, setting a radius of 0.6 arcminutes with a 'Find Mode' of 'Each'. Select Go, and the objects in the list within 0.6 arcminutes of a TYCHO-2 source have the respective TYCHO-2 columns added on to them. In this new table, select the 'Display Column Metadata' symbol on the top display bar, and select only the coordinate and positional uncertainty data, the hardness ratios and x-ray to optical flux ratios, as well as any magnitude columns contained within the data set. Finally, save and export the new list as a CSV file.
 
 4.2) Filling in the blank magnitude columns
 
-Open the new .csv file in excel. For each magnitude column in the data, sort from smallest to largest. Scroll down to the bottom of the column; any rows without data in that column will be blank. In these blank columns, input '=1e99' and enter. Repeat this for all magnitude columns in the dataset so that there are no blank spaces in the magnitudes of the 56 candidates. Click on 'save as' and save this new data over the existing file, then open the csv in TOPCAT and export again as a .fits file.
+Open the new CSV file in Excel. For each magnitude column in the data, sort from smallest to largest. You can scroll down to the bottom of the column; any rows without data in that column will be blank. In these blank columns, input '=1e99' and enter. Repeat this for all magnitude columns in the dataset so that there are no blank spaces in the magnitudes of the 56 candidates. Click on 'save as' and save this new data over the existing file, then open the CSV in TOPCAT and export again as a .fits file.
 
 4.3) Removing the saturated images in Python
 
-Open the .fits in Python using the same method as before. Select all the magnitude columns. The largest TYCHO-2 magnitude in the data is 11.802. It is assumed that an XDIN will appear at approximately the same magnitude in all optical magnitudes, therefore set the limiter at 11.802 and remove any object with a magnitude less than this in any of the available magnitude columns. This should reduce the list of candidates to 40 (37 excluding the M7). Export this list as a new .fits file.
+Open the FITS in Python. Select all the magnitude columns. The largest TYCHO-2 magnitude in the data is 11.802. It is assumed that an XDIN will appear at approximately the same magnitude in all optical magnitudes, therefore set the limiter at 11.802 and remove any object with a magnitude less than this in any of the available magnitude columns. This should reduce the list of candidates to 40 (37 excluding the M7). Export this list as a new .fits file.
 
 5) Removing objects close to an SDSS source (again)
 
