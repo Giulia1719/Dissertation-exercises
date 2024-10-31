@@ -140,7 +140,7 @@ Repeat 3.6), instead selecting Table 1 as the one generated in 3.8), using the R
 
 ![image](https://github.com/SaCu2001/ROSAT-data-filtering/assets/148392974/09e815fd-764f-4f88-9d77-4de0919c713d)
 
-Finally, check that at least 3 of the Magnificent 7 known XDINS within the SDSS all-sky survey remain in the generated list of 56 objects by comparing their RA and DEC. This can be done manually downloading the file you obtained as a CSV file and opening it in Excel. You can find the RA and DEC of the Magnificent 7 online, but this paper is a good place to start: https://arxiv.org/pdf/2407.00275.
+Finally, check that at least 3 of the Magnificent 7 known XDINS within the SDSS all-sky survey remain in the generated list of 56 objects by comparing their RA and DEC. This can be done creating a CSV file in Excel with the Magnificent 7 data, import it into TOPCAT and crossmatch it with the last file you created. You can find the RA and DEC of the Magnificent 7 online, but this paper is a good place to start: https://arxiv.org/pdf/2407.00275.
 
 
 4) Removing saturated images
@@ -149,7 +149,7 @@ In this list of 56 objects, several images appear saturated on the SDSS image vi
 
 4.1) Getting magnitude columns for each object
 
-Perform a crossmatch of the 56 candidate XDINS with TYCHO-2, setting a radius of 0.6 arcminutes with a 'Find Mode' of 'Each'. Select Go, and the objects in the list within 0.6 arcminutes of a TYCHO-2 source have the respective TYCHO-2 columns added on to them. In this new table, select the 'Display Column Metadata' symbol on the top display bar, and select only the coordinate and positional uncertainty data, the hardness ratios and x-ray to optical flux ratios, as well as any magnitude columns contained within the data set. Finally, save and export the new list as a CSV file.
+Perform a crossmatch of the 56 candidate XDINS with TYCHO-2, setting a radius of 0.6 arcminutes with a 'Find Mode' of 'Each'. Select Go, and the objects in the list within 0.6 arcminutes of a TYCHO-2 source have the respective TYCHO-2 columns added on to them. In this new table, select the 'Display Column Metadata' symbol on the top display bar, and select only the coordinate and positional uncertainty data, the hardness ratios and x-ray to optical flux ratios, as well as any magnitude columns (excluding their respective uncertainty) contained within the data set. Finally, save and export the new list as a CSV file.
 
 4.2) Filling in the blank magnitude columns
 
@@ -157,10 +157,10 @@ Open the new CSV file in Excel. For each magnitude column in the data, sort from
 
 4.3) Removing the saturated images in Python
 
-Open the FITS in Python. Select all the magnitude columns. The largest TYCHO-2 magnitude in the data is 11.802. It is assumed that an XDIN will appear at approximately the same magnitude in all optical magnitudes, therefore set the limiter at 11.802 and remove any object with a magnitude less than this in any of the available magnitude columns. This should reduce the list of candidates to 40 (37 excluding the M7). Export this list as a new .fits file.
+Open the FITS in Python. Select all the magnitude columns. The largest TYCHO-2 magnitude in the data is 11.802. It is assumed that an XDIN will appear at approximately the same magnitude in all optical magnitudes, therefore set the limiter at 11.802 and remove any object with a magnitude less than this in any of the available magnitude columns. This should reduce the list of candidates to 40 (37 excluding the M7). Export this list as a new FITS file.
 
-5) Removing objects close to an SDSS source (again)
+5) Removing objects close to an SDSS source
 
-In the SDSS image viewer it can be seen that 5 of the candidate objects are in fact white dwarf stars rather than XDINS as they appear too close to 'blue pea'-like objects. In order to remove these objects, conduct a crossmatch with SDSS DR16 as before, but then rather doing a sky with errors search, do a sky search within 7 arcseconds. This limit is chosen due to the fact that any higher value removes some of the M7 from the list, which is not desired. Perfoming this search removes 6 objects; the 5 white dwarfs as well as another object which is apparently a faint galaxy. Export this final list of 31 candidate XDINS.
+In the SDSS image viewer it can be seen that 5 of the candidate objects are in fact white dwarf stars rather than XDINS as they appear too close to 'blue pea'-like objects. In order to remove these objects, conduct a crossmatch with SDSS DR16 as done in the 3.2 step, but then rather doing a sky with errors search, do a sky search within 7 arcseconds. This limit is chosen due to the fact that any higher value removes some of the M7 from the list, which is not desired. Perfoming this search removes 6 objects; the 5 white dwarfs as well as another object which is apparently a faint galaxy. Export this final list of 31 candidate XDINS.
 
-If you run into any issues, have any queries, or spot any mistakes, I am contactable on sac48@sussex.ac.uk.
+If you run into any issues, have any queries, or spot any mistakes, I am contactable on gl321@sussex.ac.uk.
