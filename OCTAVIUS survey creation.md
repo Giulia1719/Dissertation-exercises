@@ -1,12 +1,10 @@
 ## Requirements for Survey Generator Script:
-### Python requirements
- - `python 3.9+` (i think?)
- - `numpy`
- - `pandas`
- - `pymongo`
+### Requirements
+ - `python 3.9+`, with `numpy`, `pandas` and `pymongo` (if not already installed in Anaconda, you can do it in the environment section) 
+ - CSV file with the data you are going to put in the survey (remember to include an `XCS_ID` column with as data the row number to identify each object in the survey uniquely)
+ - Object images, which can be downloaded from https://skyserver.sdss.org/dr16/en/tools/chart/listinfo.aspx, knowing the objects RA and DEC 
 
-### Database account
- - Needs `DB_USERNAME` and `DB_PASSWORD` (might be able to use [api creds but not ideal?](../api/startup/mongoose.js))
+
 
 ### A survey you want to create
  - There is an example of a schema [here](https://github.com/TobyWallage/creating_test_survey)
@@ -15,19 +13,13 @@
     - other stuff?
 
 ## How to use
-
+Open a new terminal in 
 Run this command to check usage of script
 ``` shell
 python ./new_survey.py -h
 ```
 
 Ensure your `DB_USERNAME` and `DB_PASSWORD` variables and set in your shell
-e.g. <br/>
-##### In bash
-``` bash
-export DB_USERNAME="your_username"
-export DB_PASSWORD="your_password"
-```
 ##### In powershell
 ``` powershell
 $env:DB_USERNAME = "your_username"
