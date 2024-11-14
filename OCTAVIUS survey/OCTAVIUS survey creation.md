@@ -29,13 +29,17 @@ If it worked, you should be able to open OCTAVIUS and see your survey with the d
 ## Configure the images
 
 Find your newly created survey struct file in `./XCS_WB/ui/src/Routes/[nameOfYourSurvey]/[name-of-your-survey-struct.js`, as in this survey example:
+
 ![XAPA-test-strcut.js file](./Images/finding_struct_file.png)
 
 Currently, the file will contain four default images:
+
 ![defaul images](./Images/default_images.png)
 
 These can be substituted with your images. As specified in the Requirements section, you can download them knowing the RA and DEC of your objects from the SDSS SkyServer website. For the example survey:
+
 ![XAPA images example](./Images/XAPA_images_example.png)
+
 Ensure:
 - `value` matches the `key` 
 - `label` is what will be shown as column header
@@ -47,6 +51,7 @@ As an example:
 ``` 
 value: props => <Image {...props} ext={"value"}>
 ```
+
 ![Cells impl example](./Images/Cells_impl_example.png)
 
 Lastly, find the `format_url` file for your survey in `./XCW_WB/ui/src/Utils/helpers/format-[your-survey-name]-url.js`
