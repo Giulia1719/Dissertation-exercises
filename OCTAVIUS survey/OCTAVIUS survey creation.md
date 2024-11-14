@@ -12,7 +12,7 @@ Open a new terminal in Visual Studio, change the directory to XCS_WB and run thi
 python ./new_survey.py -h
 ```
 
-Using as `DB_USERNAME` and as `DB_PASSWORD`, input in powershell:
+Using 'DES_MASTER' as `DB_USERNAME` and 'ZwernemannSimply1835GiuseppinaMonicaBoris' as `DB_PASSWORD`, input in powershell:
 ``` 
 $env:DB_USERNAME = "your_username"
 $env:DB_PASSWORD = "your_password"
