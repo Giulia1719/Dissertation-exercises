@@ -1,4 +1,3 @@
-## Requirements for Survey Generator Script:
 ### Requirements
  - `Python 3.9+`, with `numpy`, `pandas` and `pymongo` (if not already installed in Anaconda, you can do it in the environment section)
  - Visual Studio Code as Anaconda extension
