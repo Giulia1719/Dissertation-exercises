@@ -11,10 +11,10 @@ Open a new terminal in Visual Studio, change the directory to XCS_WB/survey_gene
 python ./new_survey.py -h
 ```
 
-Using 'DES_MASTER' as `DB_USERNAME` and 'ZwernemannSimply1835GiuseppinaMonicaBoris' as `DB_PASSWORD`, input in powershell:
+Input in powershell:
 ``` 
-$env:DB_USERNAME = "your_username"
-$env:DB_PASSWORD = "your_password"
+$env:DB_USERNAME = "DES_MASTER"
+$env:DB_PASSWORD = "ZwernemannSimply1835GiuseppinaMonicaBoris"
 ```
 
 Input this command:
