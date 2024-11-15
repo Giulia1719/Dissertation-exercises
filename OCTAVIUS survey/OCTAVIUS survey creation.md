@@ -6,7 +6,7 @@
 
 
 ## Create the survey
-Open a new terminal in Visual Studio, change the directory to XCS_WB and run this command to check if the survey generator Python script works:
+Open a new terminal in Visual Studio, change the directory to XCS_WB/survey_generator and run this command to check if the survey generator Python script works:
 ```
 python ./new_survey.py -h
 ```
