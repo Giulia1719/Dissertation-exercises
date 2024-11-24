@@ -41,6 +41,7 @@ Since your images are in a Cloud storage, you can just ignore them and put a dou
 
 
 Lastly, find the `format_url` file for your survey in `./XCW_WB/ui/src/Utils/helpers/format-[your-survey-name]-url.js`.
+
 From Azure Blob, you can get a link to share your stored image. It needs to be sent, together with a zip file of all your pictures, to reese.wilkinson@sussex.ac.uk. He will create a new link that you will need to copy, as for example:
 
 ``` 
