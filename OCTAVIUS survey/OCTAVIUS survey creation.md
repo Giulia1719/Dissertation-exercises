@@ -2,7 +2,7 @@
  - `Python 3.9+`, with `numpy`, `pandas` and `pymongo` (if not already installed in Anaconda, you can do it in the environment section)
  - Visual Studio Code as Anaconda extension
  - CSV file with the data you are going to put in the survey (remember to include an `XCS_ID` column with as data the row number to identify each object in the survey uniquely)
- - Object images, which can be downloaded from https://skyserver.sdss.org/dr16/en/tools/chart/listinfo.aspx, knowing the objects RA and DEC 
+ - Object images, previously downloaded and modified  
 
 
 ## Create the survey
