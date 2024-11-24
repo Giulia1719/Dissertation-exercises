@@ -37,31 +37,16 @@ Currently, the file will contain four default images:
 
 Since your images are in a Cloud storage, you can just ignore them and put a double slash on each line:
 
-![XAPA images example](./Images/XAPA_images_example.png)
+![XAPA images example](./Images/images_example.png)
 
-Ensure:
-- `value` matches the `key` 
-- `label` is what will be shown as column header
-- `sortable` must be false
-- `desc` is a short description shown when the user hovers their mouse over the `label`
 
-Near the bottom, there will be the `cells` implementations of the values, from which you should remove the default image values and replace them with your own.
-As an example:
-``` 
-value: props => <Image {...props} ext={"value"}>
-```
-
-![Cells impl example](./Images/Cells_impl_example.png)
-
-Lastly, find the `format_url` file for your survey in `./XCW_WB/ui/src/Utils/helpers/format-[your-survey-name]-url.js`
+Lastly, find the `format_url` file for your survey in `./XCW_WB/ui/src/Utils/helpers/format-[your-survey-name]-url.js`.
+From Azure Blob, you can get a link to share your stored image. It needs to be sent, together with a zip file of all your pictures, to reese.wilkinson@sussex.ac.uk. He will create a new link that you will need to copy, as for example:
 
 ``` 
 const formatImageUrl = (datum, size, ext) =>
-  `https://xcsresearchgroup.blob.core.windows.net/xapa-test-survey-images/XAPA_COMP_Images/${datum?.XCS_ID}_XAPA_COMP_ext_${ext}.png`;
+  `https://xcsresearchgroup.blob.core.windows.net/xapa-test-survey-images/XAPA_COMP_Images/${datum?.XCS_ID}_XAPA_COMP.png`;
 ```
 
-Change the string formatting to what your images would be called, noting that:
-- `datum` is a struct containing the values for each row in the table, use it to access the corresponding value from the schema you uploaded, namely the `XCS_ID` of the row
-- `size` is the current size selected by the user from the dropdown, which doesn't need to be modified
-- `ext` is the `value` from the table struct file that was modified previously, use this to know which image it should be. In the example, it is used to distinguish between Python images and IDL images
+The ${datum?.XCS_ID}_XAPA_COMP.png part indicates the name of your images, so you must name them so that OCTAVIUS can recognise the XCS_ID column.
 
