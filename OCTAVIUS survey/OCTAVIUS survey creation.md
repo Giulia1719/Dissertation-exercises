@@ -35,7 +35,7 @@ Currently, the file will contain four default images:
 
 ![defaul images](./Images/default_images.png)
 
-These can be substituted with your images. As specified in the Requirements section, you can download them knowing the RA and DEC of your objects from the SDSS SkyServer website. For the example survey:
+Since your images are in a Cloud storage, you can just ignore them and put a double slash on each line:
 
 ![XAPA images example](./Images/XAPA_images_example.png)
 
