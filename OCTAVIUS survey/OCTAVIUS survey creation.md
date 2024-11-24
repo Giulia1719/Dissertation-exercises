@@ -48,5 +48,5 @@ const formatImageUrl = (datum, size, ext) =>
   `https://xcsresearchgroup.blob.core.windows.net/xapa-test-survey-images/XAPA_COMP_Images/${datum?.XCS_ID}_XAPA_COMP.png`;
 ```
 
-The ${datum?.XCS_ID}_XAPA_COMP.png part indicates the name of your images, so you must name them so that OCTAVIUS can recognise the XCS_ID column.
+The `${datum?.XCS_ID}_XAPA_COMP.png` part indicates the name of your images, so you must name them so that OCTAVIUS can recognise the XCS_ID column.
 
