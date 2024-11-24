@@ -1,5 +1,6 @@
 # ROSAT-data-filtering
-Applying filters to the Second ROSAT All-Sky Survey Point Source Catalog using Python and TOPCAT, in order to generate a list of potential candidates for X-ray Dim Isolated Neutron Stars (XDINs) in the ROSAT data
+Applying filters to the Second ROSAT All-Sky Survey Point Source Catalog using Python and TOPCAT, in order to generate a list of potential candidates for X-ray Dim Isolated Neutron Stars (XDINs) in the ROSAT data.
+The number of candidates you obtain at the end of the exercise is not important, but make sure you apply all filters correctly and you have 3 of the Magnificent 7 in your final candidate list.
 
 1) Downloading the ROSAT catalog
 
@@ -158,9 +159,10 @@ Open the new CSV file in Excel. For each magnitude column in the data, sort from
 4.3) Removing the saturated images in Python
 
 Open the FITS in Python. Select all the magnitude columns. The largest TYCHO-2 magnitude in the data is 11.802. It is assumed that an XDIN will appear at approximately the same magnitude in all optical magnitudes, therefore set the limiter at 11.802 and remove any object with a magnitude less than this in any of the available magnitude columns. This should reduce the list of candidates to 40 (37 excluding the M7). Export this list as a new FITS file.
+You can go through this process as it has been done when filtering through the data.
 
 5) Removing objects close to an SDSS source
 
-In the SDSS image viewer it can be seen that 5 of the candidate objects are in fact white dwarf stars rather than XDINS as they appear too close to 'blue pea'-like objects. In order to remove these objects, conduct a crossmatch with SDSS DR16 as done in the 3.2 step, but then rather doing a sky with errors search, do a sky search within 7 arcseconds. This limit is chosen due to the fact that any higher value removes some of the M7 from the list, which is not desired. Perfoming this search removes 6 objects; the 5 white dwarfs as well as another object which is apparently a faint galaxy. Export this final list of 31 candidate XDINS.
+In the SDSS image viewer, it can be seen that 5 of the candidate objects are in fact white dwarf stars rather than XDINS as they appear too close to 'blue pea'-like objects. In order to remove these objects, conduct a crossmatch with SDSS DR16 as done in the 3.2 step, but then rather doing a sky with errors search, do a sky search within 7 arcseconds. This limit is chosen due to the fact that any higher value removes some of the M7 from the list, which is not desired. Perfoming this search removes 6 objects; the 5 white dwarfs as well as another object which is apparently a faint galaxy. Export this final list of 31 candidate XDINS.
 
 If you run into any issues, have any queries, or spot any mistakes, I am contactable on gl321@sussex.ac.uk.
