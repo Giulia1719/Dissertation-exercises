@@ -79,3 +79,5 @@ You can then go to the port shown in the message, in this case, http://localhost
 ```
 
 If it doesn't show the images, check the `index.js` file in the same folder has the same formatImageUrl name as your `format_url` file, If not, you need to import it correctly in two different files: the `image-manipulation-modal.js` and the `image.jsx` in the `component` folder where your survey is stored. 
+
+![local_storing](./Images/local_storing.png)
