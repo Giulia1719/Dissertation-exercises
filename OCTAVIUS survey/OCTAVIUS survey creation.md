@@ -51,3 +51,31 @@ const formatImageUrl = (datum, size, ext) =>
 
 The `${datum?.XCS_ID}_XAPA_COMP.png` part indicates the name of your images, so you must name them so that OCTAVIUS can recognise the XCS_ID column.
 
+## Store OCTAVIUS images locally
+Another way to show images in the survey you just created is by storing them locally. It is not ideal for many pictures but is a good way to check if everything is set up properly. 
+
+Copy the path where the images are stored and in Visual Studio, change the directory. For example:
+
+``` 
+PS C:\Users\giuli> Set-Location .\OneDrive\Desktop\Astrophysics` MPhys\YPS C:\Users\giuli\OneDrive\Desktop\Astrophysics MPhys\Year 4\Dissertation\Mag7_images
+```
+
+Then run the command:
+
+``` 
+python -m http.server
+```
+
+It should appear something like this: 
+
+``` 
+Serving HTTP on :: port 8000 (http://[::]:8000/) ...
+```
+
+You can then go to the port shown in the message, in this case, http://localhost:8000/ and check that it contains the images. After that, you can go to the `format_url` file and change the link to something like this:
+
+``` 
+`http://localhost:8000/Mag7_${datum?.XCS_ID}.png`
+```
+
+If it doesn't show the images, check the `index.js` file in the same folder has the same formatImageUrl name as your `format_url` file, If not, you need to import it correctly in two different files: the `image-manipulation-modal.js` and the `image.jsx` in the `component` folder where your survey is stored. 
