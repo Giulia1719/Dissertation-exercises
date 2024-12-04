@@ -48,3 +48,5 @@ print("Image retrieval complete!")
 
 
 ## SDSS Image Edit
+
+After generating the images, they can be edited by identifying the object of interest and any possible light sources, such as stars or galaxies, for whose minimum brightness can be modified in the this file: 
