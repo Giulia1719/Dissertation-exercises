@@ -108,7 +108,7 @@ In File 4, the module LazyLoadImage can be used to defers the loading of images 
                 />
 ```
 
-In File 5, import the file you have created at the beginning, togheter with nay other module already imported, and call each dynamical link separately just for the relevant section in your survey. This avoids having the same image in 2 different sections:
+In File 5, import the file you have created at the beginning, togheter with any other module already imported, and call each dynamical link separately just for the relevant section in your survey. This avoids having the same image in 2 different sections:
 
 ```
 import {formatGWImageUrl, formatSearchImageUrl} from './image-formatting';
