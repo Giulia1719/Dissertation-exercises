@@ -17,16 +17,16 @@ import pandas as pd
 import requests
 import os
 
-csv_file= 'GW_vett_practice.csv'  
-data = pd.read_csv(csv_file)
-output_dir = "GW_practice"
-os.makedirs(output_dir, exist_ok=True)
+csv_file= 'name_of_file.csv'  
+data= pd.read_csv(csv_file)
+output_dir= "name_of_directory"
+os.makedirs(output_dir, exist_ok= True)
 
-def sdss_image(ra, dec, scale=3, width=512, height=512):
-    image_url = (f"https://skyserver.sdss.org/dr12/SkyserverWS/ImgCutout/getjpeg?ra={ra}&dec={dec}&scale={scale}&width={width}&height={height}")
+def sdss_image(ra, dec, scale= 3, width= 512, height= 512):
+    image_url= (f"https://skyserver.sdss.org/dr12/SkyserverWS/ImgCutout/getjpeg?ra={ra}&dec={dec}&scale={scale}&width={width}&height={height}")
     return image_url
 
-counter=1
+counter= 1
 for index, row in data.iterrows():     #iteration over the CSV rows
     name= row['NAME']
     ra= row['RA'] 
@@ -35,8 +35,8 @@ for index, row in data.iterrows():     #iteration over the CSV rows
     response= requests.get(image_url)
     
     if response.status_code == 200:
-        image_path = os.path.join(output_dir, f"GWpract_{counter}.jpg")
-        counter +=1
+        image_path= os.path.join(output_dir, f"GWpract_{counter}.jpg")
+        counter+= 1
         with open(image_path, "wb") as f:
             f.write(response.content)
         print(f"Saved image for {name} at {image_path}")
