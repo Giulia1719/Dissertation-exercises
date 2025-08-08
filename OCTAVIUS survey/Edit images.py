@@ -76,34 +76,33 @@ class ImagePlotCenters:
         ax.imshow(img, aspect= 'equal')
         ax.set_axis_off()
 
-        #Calculate center pixel coordinates and scaling
+        # Calculate center pixel coordinates and scaling
         xmax, ymax= img.shape[:2]
         xcent, ycent= xmax/2, ymax/2
-        scale= SIZE/xmax/60
-        marker_size= 10
-        error_size= 15/3600/scale
+        radius_arcsec= 4.5
+        radius_pixels= radius_arcsec*xmax/(SIZE*60)
 
-        #Plot the central marker
-        p= mppatches.Circle(
+        # Plot the central marker
+        p = mppatches.Circle(
             (round(xcent, 0), round(ycent, 0)),
-            radius= error_size,
+            radius= radius_pixels,
             linestyle= ":",
             ec= "green",
             linewidth= 2,
             fc= 'none'
         )
-        ax.add_patch(p)
-
-        #Add a scale bar
-        fontprops= fm.FontProperties(size= 18)
-        scalebar= AnchoredSizeBar(
+        ax.add_patch(p)        
+        
+        # Add a scale bar
+        fontprops = fm.FontProperties(size=18)
+        scalebar = AnchoredSizeBar(
             ax.transData,
-            151/2, "30''", 'lower left',
-            pad= 0.1,
-            color= 'white',
-            frameon= False,
-            size_vertical= 1,
-            fontproperties= fontprops
+            151 / 2, "10''", 'lower left',
+            pad=0.1,
+            color='white',
+            frameon=False,
+            size_vertical=1,
+            fontproperties=fontprops
         )
         ax.add_artist(scalebar)
 
